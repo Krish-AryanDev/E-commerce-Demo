@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+/*
+  NOVA design system — Tailwind CSS v4 theme tokens.
+  Keeping the palette intentionally tight: white / zinc backgrounds,
+  near-black headings, mid-gray body copy, electric blue accent.
+*/
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+
+  /* Electric blue accent (mirrors Tailwind blue-600 family) */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+
+  /* Soft, tinted shadows instead of harsh black */
+  --shadow-soft: 0 4px 24px -6px rgb(30 58 138 / 0.08);
+  --shadow-card: 0 12px 40px -12px rgb(30 58 138 / 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: var(--color-zinc-900);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Hide number input spinners on the quantity / price fields */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* Minimal, on-brand scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-zinc-200);
+  border-radius: 9999px;
+  border: 2px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-zinc-300);
+}
+
+/* Reusable fade-up entrance used across hero + grids */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
